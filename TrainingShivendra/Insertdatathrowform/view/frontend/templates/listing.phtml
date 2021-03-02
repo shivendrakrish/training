@@ -1,0 +1,44 @@
+<?php
+    $collection = $this->getTestCollection();
+?>
+<table class="data table" id="test-data-table">
+    <caption class="table-caption">Users Data</caption>
+    <a href="<?php echo $block->getBaseUrl()?>insertdatathrowform/index/index/" class="button"> Add New User </a>
+
+    <thead>
+        <tr>
+            <th scope="col" class="col title">S.No.</th>
+            <th scope="col" class="col name">Name</th>
+            <th scope="col" class="col email">Email</th>
+            <th scope="col" class="col contact">Contact</th>
+            <th scope="col" class="col subscreption">Subscription</th>
+            <th scope="col" class="col qualification">Qualification</th>
+            <th scope="col" class="col gender">Gender</th>
+            <th scope="col" class="col actions">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php 
+        $i = 1;
+        foreach ($collection as $key => $data): ?>
+            <tr>
+                <td data-th="Title" class="col title"><?php echo $i; ?></td>
+                <td data-th="Author" class="col author"><?php echo $data->getName(); ?></td>
+                <td data-th="Content" class="col content"><?php echo $data->getEmail(); ?></td>
+                <td data-th="Content" class="col content"><?php echo $data->getEmail(); ?></td>
+                <td data-th="Content" class="col content"><?php echo $data->getSubscription(); ?></td>
+
+                <td data-th="Content" class="col content"><?php echo $data->getQualification(); ?></td>
+
+                <td data-th="Date" class="col created_at"><?php echo $data->getGender(); ?></td>
+                <td data-th="Actions" class="col actions">
+                    <a href="<?php echo $block->getBaseUrl().'insertdatathrowform/index/index/'.$data->getId(); ?>" class="action edit">
+                        <span>Edit</span>
+                    </a>
+                </td>
+            </tr>
+        <?php
+        $i++; 
+        endforeach; ?>
+    </tbody>
+</table>
