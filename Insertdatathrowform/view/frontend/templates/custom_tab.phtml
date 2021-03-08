@@ -1,0 +1,29 @@
+<!-- <script type="text/javascript" src="jquery-2.0.3.js"></script>
+<script type="text/javascript" src="jquery.countdownTimer.js"></script>
+<link rel="stylesheet" type="text/css" href="jquery.countdownTimer.css" /> -->
+<?php
+// get current product data
+$product = $block->getProduct();
+
+// get attribute name
+$dt = new \DateTime($product->getDealstatdate());
+$dealdate =  $dt->format('Y/m/d');
+$dealdate = date('Y/m/d', strtotime($dealdate . ' +1 day'));
+?>
+<?php if ($product->getDealstatus() == true)  { ?>
+	<input type="hidden" name="dealdate" id="dealdate" value="<?php echo $dealdate ; ?>">
+	<span id="countdeal"></span>
+
+<?php } else { echo "No deal for now";}?>
+<script>
+require([
+'jquery',
+'TrainingShivendra_Insertdatathrowform/js/countdown/jquery.countdown.min'], function ($) {
+	var dealdate = $('#dealdate').val();
+// Calling the vidget function the way we described before
+$('#countdeal').countdown(dealdate, function(event) {
+  $(this).html(event.strftime('%H:%M:%S'));
+});
+});
+</script>
+
