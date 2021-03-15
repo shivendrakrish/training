@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
-    <menu>
-        <add id="TrainingShivendra_Insertdatathrowform::view" title="Test Menu" module="TrainingShivendra_Insertdatathrowform" sortOrder="50" resource="TrainingShivendra_Insertdatathrowform::view"/>
-        <add id="TrainingShivendra_Insertdatathrowform::menu" title="Manage Users" module="TrainingShivendra_Insertdatathrowform" sortOrder="20" parent="TrainingShivendra_Insertdatathrowform::view" action="insertdatathrowform/employee/index" resource="TrainingShivendra_Insertdatathrowform::menu"/>
-    </menu>
-</config>
-
