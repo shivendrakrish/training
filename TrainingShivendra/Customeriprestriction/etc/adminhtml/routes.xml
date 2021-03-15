@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framework/App/etc/routes.xsd">
+    <router id="admin">
+        <route id="customeriprestriction" frontName="customeriprestriction">
+            <module name="TrainingShivendra_Customeriprestriction" before="Magento_Adminhtml" />
+        </route>
+    </router>
+</config>

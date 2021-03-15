@@ -17,10 +17,8 @@ class Insertdatathrowform extends \Magento\Framework\View\Element\Template
     }
     public function getuserCollection()
 	    {
-	        //$crud = $this->crud->create();
-	        $id = $this->request->getParam('id');
-	        $collection = $this->crud->getCollection($id);
-      
-	        //return $collection;
+	        $product_id = $this->request->getParam('id');
+        return $this->crud->getCollection($product_id);
+      		
 	    }
 }
