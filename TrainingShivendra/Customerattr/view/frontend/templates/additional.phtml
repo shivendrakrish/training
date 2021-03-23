@@ -1,0 +1,30 @@
+<?php 
+$mother = $block->getattributevalue();
+$father = $block->getattributevalue();
+$mother=$this->getattributevalue();
+
+
+if ($mother == true) {  ?>
+    <div class="field">
+            <label class="label" for="mother">
+                <span><?php echo $block->escapeHtmlAttr(__('Mother')) ?></span>
+            </label>
+            <input type="text" name="mother" id="mother" data-role="mother" value="" title="<?php echo $block->escapeHtmlAttr(__('Mother')) ?>" class="input-text" />
+        </div>
+<?php }
+if ($father == true) {  ?>
+ ?>
+  
+         <div class="field">
+            <label class="label" for="mother">
+                <span><?php echo $block->escapeHtmlAttr(__('Father')) ?></span>
+            </label>
+            <input type="text" name="father" id="father" data-role="father" value="" title="<?php echo $block->escapeHtmlAttr(__('Father')) ?>" class="input-text" />
+        </div>
+        <?php } ?>
+         <div class="field">
+            <label class="label" for="mother">
+                <span><?php echo $block->escapeHtmlAttr(__('Mother')) ?></span>
+            </label>
+            <input type="text" name="mother" id="mother" data-role="mother" value="<?php echo $block->getattributevalue(); ?>" title="<?php echo $block->escapeHtmlAttr(__('Mother')) ?>" class="input-text" />
+        </div>
