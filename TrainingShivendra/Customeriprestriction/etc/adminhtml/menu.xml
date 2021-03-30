@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="TrainingShivendra_Customeriprestriction::view" title="IP Address" module="TrainingShivendra_Customeriprestriction" sortOrder="50" resource="TrainingShivendra_Customeriprestriction::view"/>
+        <add id="TrainingShivendra_Customeriprestriction::menu" title="Manage IP" module="TrainingShivendra_Customeriprestriction" sortOrder="20" parent="TrainingShivendra_Customeriprestriction::view" action="customeriprestriction/ip/index" resource="TrainingShivendra_Customeriprestriction::menu"/>
+    </menu>
+</config>
+

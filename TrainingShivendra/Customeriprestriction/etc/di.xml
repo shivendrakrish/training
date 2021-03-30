@@ -1,0 +1,15 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="customeriprestriction_ip_listing_data_source" xsi:type="string">TrainingShivendra\Customeriprestriction\Model\ResourceModel\Ip\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="TrainingShivendra\Customeriprestriction\Model\ResourceModel\Ip\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">restricted_ip</argument>
+            <argument name="resourceModel" xsi:type="string">TrainingShivendra\Customeriprestriction\Model\ResourceModel\Ip</argument>
+        </arguments>
+    </virtualType>
+</config>
