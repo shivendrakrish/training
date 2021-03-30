@@ -1,0 +1,25 @@
+<?php
+// get current product data
+$product = $block->getProduct();
+$dt = new \DateTime($product->getDealstatdate());
+$dealdate =  $dt->format('Y/m/d');
+$dealdate = date('Y/m/d', strtotime($dealdate . ' +1 day'));
+?>
+<?php if ($product->getDealstatus() == true)  { ?>
+	<input type="hidden" name="dealdate" id="dealdate" value="<?php echo $dealdate ; ?>">
+	<span id="countdeal"></span>
+
+<?php } else { echo "No deal for now";}?>
+
+<script>
+require([
+'jquery',
+'TrainingShivendra_Dailydeal/js/countdown/jquery.countdown.min'], function ($) {
+	var dealdate = $('#dealdate').val();
+// Calling countdown 
+$('#countdeal').countdown(dealdate, function(event) {
+  $(this).html(event.strftime('%H:%M:%S'));
+});
+});
+</script>
+
