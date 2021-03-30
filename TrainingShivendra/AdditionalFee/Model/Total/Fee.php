@@ -1,20 +1,9 @@
 <?php
-/**
- * Copyright © 2015 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
 namespace TrainingShivendra\AdditionalFee\Model\Total;
-
-
 class Fee extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
 {
-   /**
+     /**
      * Collect grand total address amount
-     *
-     * @param \Magento\Quote\Model\Quote $quote
-     * @param \Magento\Quote\Api\Data\ShippingAssignmentInterface $shippingAssignment
-     * @param \Magento\Quote\Model\Quote\Address\Total $total
-     * @return $this
      */
     protected $quoteValidator = null; 
     protected $helperData = null;
@@ -70,19 +59,6 @@ class Fee extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
         $total->setSubtotalInclTax(0);
         $total->setBaseSubtotalInclTax(0);
     }
-    /**
-     * @param \Magento\Quote\Model\Quote $quote
-     * @param Address\Total $total
-     * @return array|null
-     */
-    /**
-     * Assign subtotal amount and label to address object
-     *
-     * @param \Magento\Quote\Model\Quote $quote
-     * @param Address\Total $total
-     * @return array
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-     */
     public function fetch(\Magento\Quote\Model\Quote $quote, \Magento\Quote\Model\Quote\Address\Total $total)
     {
         return [
@@ -91,12 +67,6 @@ class Fee extends \Magento\Quote\Model\Quote\Address\Total\AbstractTotal
             'value' => 1
         ];
     }
-
-    /**
-     * Get Subtotal label
-     *
-     * @return \Magento\Framework\Phrase
-     */
     public function getLabel()
     {
         return __('Fee');
