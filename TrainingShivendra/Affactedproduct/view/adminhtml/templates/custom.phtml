@@ -1,0 +1,66 @@
+<?php
+$blockObj= $block->getLayout()->createBlock('TrainingShivendra\Affactedproduct\Block\Custom');
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+?>
+<div class="admin__field-control control">
+    <div class="fieldset-wrapper-content in collapse" id="manage-store-labels">
+        <fieldset class="admin__fieldset fieldset">
+            <div class="admin__control-table-wrapper">
+                <table class="admin__dynamic-rows data-grid" data-role="grid">
+                <thead>
+                <tr>
+                    <th class="data-grid-draggable-row-cell"></th>
+                    <th class="data-grid-th"  data-repeat-index="0">
+                        <span data-bind="i18n: $label().label">ID</span>
+                    </th><th class="data-grid-th"  data-repeat-index="1">
+                        <span data-bind="i18n: $label().label">Thumbnail</span>
+                    </th><th class="data-grid-th"  data-repeat-index="2">
+                        <span data-bind="i18n: $label().label">Name</span>
+                    </th><th class="data-grid-th"  data-repeat-index="3">
+                        <span data-bind="i18n: $label().label">Status</span>
+                    </th><th class="data-grid-th"  data-repeat-index="4">
+                        <span data-bind="i18n: $label().label">Attribute Set</span>
+                    </th><th class="data-grid-th"  data-repeat-index="5">
+                        <span data-bind="i18n: $label().label">SKU</span>
+                    </th><th class="data-grid-th"  data-repeat-index="6">
+                        <span data-bind="i18n: $label().label">Price</span>
+                    </th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <?php  
+                foreach ($blockObj->afactedProduct() as  $pid) {
+                    $product = $objectManager->create('Magento\Catalog\Model\Product')->load($pid);
+                    $attributeSet = $objectManager->create('Magento\Eav\Api\AttributeSetRepositoryInterface');
+
+                    $attributeSetRepository = $attributeSet->get($product->getAttributeSetId());
+                    $attribute_set_name = $attributeSetRepository->getAttributeSetName();
+                        $status  ="Enabled";
+                    if ($product->getStatus() == false) {
+                        $status  ="Disabled";
+                    }
+                    $imageHelper  = $objectManager->get('\Magento\Catalog\Helper\Image');
+                    $url = $imageHelper->init($product, 'product_thumbnail_image')->getUrl(); 
+
+                    $basePrice = $product->getPriceInfo()->getPrice('regular_price');
+                    $regularPrice = $basePrice->getMinRegularAmount()->getValue();
+                    $specialPrice = $product->getFinalPrice();                                      
+                ?>
+                <td><div class="draggable-handle" data-bind="afterRender: $data.initListeners"></div></td>
+                <td  data-index="id">
+                <span data-index="id"><?php echo $product->getId(); ?></span></td>
+                  <td><img class="admin__control-thumbnail" src="<?php   echo $url; ?>"></td>
+                  <td><?php echo $product->getName(); ?></td>
+                  <td><?php echo $status; ?></td>
+                  <td><?php echo $attribute_set_name; ?></td>
+                  <td><?php echo $product->getSku(); ?></td>
+                 <td><?php echo $specialPrice; ?></td>
+                </tr>
+                <?php  } ?>
+                </tbody>
+            </table>
+            </div>
+        </fieldset>
+    </div>
+</div>
