@@ -9,18 +9,22 @@ class SaveDeliveryTypeObserver implements ObserverInterface
     protected $_quote;
     protected $_order;
     protected $_date;
-    protected $_productloader;
+    protected $_productCollectionFactory;
 
-    public function __construct(\Magento\Quote\Model\Quote $quote,
+    public function __construct(
+        \Magento\Framework\View\Element\Template\Context $context,
+        \Magento\Quote\Model\Quote $quote,
         \Magento\Sales\Model\Order $order,
         \Magento\Framework\Stdlib\DateTime\DateTime $date,
-        \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $_productloader
+        \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory $productCollectionFactory,        
+              array $data = []
     )
     {
         $this->_quote = $quote;
         $this->_order = $order;
         $this->_date = $date;
-        $this->_productloader = $_productloader;
+        $this->_productCollectionFactory = $productCollectionFactory;
+
     }
 
     public function execute(EventObserver $observer)
@@ -29,12 +33,14 @@ class SaveDeliveryTypeObserver implements ObserverInterface
         $pids = [];
         $order_id = $order->getIncrementId();
         foreach($order->getAllItems() as $item) {
-                      array_push($pid, $item->getProductId());
+                      array_push($pids, $item->getProductId());
         }
         $sameDayenable = [];
         foreach ($pids as $prductId) {
-                $prou =  $this->_productloader->load($prductId);
-                array_push($sameDayenable, $prou->getSame_day_delivery());
+                    $collection = $this->_productCollectionFactory->create();
+
+                $prou =  $collection->getData($prductId);
+                array_push($sameDayenable, $collection->getData('same_day_delivery'));
         }
         $delivertType = "";
         $currenttime = $this->_date->gmtDate('Y-m-d H:i:s a');
