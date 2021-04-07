@@ -15,7 +15,7 @@ define([
                     url: AjaxUrl,
                     type: "POST",
                 }).done(function (data) {
-                   $('#ajaxresponse').html(data.output);
+                   $('#msg').html(data);
                     return true;
                 });
             },2000);

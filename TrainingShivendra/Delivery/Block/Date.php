@@ -16,6 +16,5 @@ class Date extends \Magento\Framework\View\Element\Template
     public function getCurrentdate()
     {
         return $date = $this->date->gmtDate('Y-m-d');
-
     }
 }
