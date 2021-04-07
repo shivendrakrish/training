@@ -2,7 +2,6 @@
 namespace TrainingShivendra\Delivery\Observer;
 use Magento\Framework\Event\Observer as EventObserver;
 use Magento\Framework\Event\ObserverInterface;
-
 class SaveDeliveryTypeObserver implements ObserverInterface
 {
    
@@ -10,7 +9,6 @@ class SaveDeliveryTypeObserver implements ObserverInterface
     protected $_order;
     protected $_date;
     protected $_productCollectionFactory;
-
     public function __construct(
         \Magento\Framework\View\Element\Template\Context $context,
         \Magento\Quote\Model\Quote $quote,
@@ -24,7 +22,6 @@ class SaveDeliveryTypeObserver implements ObserverInterface
         $this->_order = $order;
         $this->_date = $date;
         $this->_productCollectionFactory = $productCollectionFactory;
-
     }
 
     public function execute(EventObserver $observer)
@@ -46,10 +43,10 @@ class SaveDeliveryTypeObserver implements ObserverInterface
         $currenttime = $this->_date->gmtDate('Y-m-d H:i:s a');
         $samedatdeliverytime = $this->_date->gmtDate('Y-m-d').' 04:00:00 pm';
         if (!empty($sameDayenable)) {
-            if ($currenttime < $samedatdeliverytime) {
+            if ($currenttime > $samedatdeliverytime) {
               $delivertType = "Same Day delivery";
             }
-            if ($currenttime > $samedatdeliverytime) {
+            if ($currenttime < $samedatdeliverytime) {
               $delivertType = "Delivery tomorrow";
             } 
         } else {               
