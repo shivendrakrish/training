@@ -1,0 +1,35 @@
+<?php
+$blockObj= $block->getLayout()->createBlock('TrainingShivendra\Delivery\Block\Date');
+$currenttime = $blockObj->getCurrentdateTime();
+$product = $block->getProduct();
+$product->getSame_day_delivery();
+$samedatdeliverytime = $blockObj->getCurrentdate().' 20:00:00 pm';
+$month = date("m"); //month
+$nextday = date("d", strtotime("+1 days")); // start date
+$monthname = date("F", mktime(0, 0, 0, $month, 10));
+ if ($product->getSame_day_delivery() == true) {  ?>
+ 	<b><span id="msg" style="color: green">
+<?php 
+	if ($currenttime < $samedatdeliverytime) {
+	  echo "Order Today and Receive it by Today";
+	}
+	if ($currenttime > $samedatdeliverytime) {
+	  echo "Order Today and Receive it by tomorrow ".$monthname.", ". $nextday;
+	} 
+} else { echo "Order Today and receive it by 1 to 3 Days";} ?>
+</b>
+</span>
+</b>
+
+<?php
+$ajaxurl = $block->getBaseUrl().'delivery/index/index';
+?>
+<script type="text/x-magento-init">
+        {
+            "*": {
+                "TrainingShivendra_Delivery/js/custom": {
+                    "AjaxUrl": "<?php echo $ajaxurl; ?>"
+                }
+            }
+        }
+</script>
