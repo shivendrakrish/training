@@ -29,9 +29,12 @@ class Save extends \Magento\Framework\App\Action\Action
     }
     public function execute()
     {  
+     try {
         $resultRedirect = $this->resultRedirectFactory->create();
         $data = $this->getRequest()->getParams();
-        if (isset($data['qty'])  && isset($data['p_id'])) {
+        $is_qtyint = ctype_digit((string)$data['qty']);
+        $is_pidint = ctype_digit((string)$data['p_id']);
+        if ($is_qtyint == true  && $is_pidint == true) {
             $userdetail = $this->authSession->getUser();
             $data['updated_by'] = $userdetail->getUsername();
             $product=$this->_product->load($data['p_id']); //load product which you want to update stock
@@ -45,13 +48,19 @@ class Save extends \Magento\Framework\App\Action\Action
             $data['p_sku'] = $product->getSku();
             $save = $this->stock->setData($data)->save();
             if($save) {
-                $this->messageManager->addSuccessMessage(__('You saved the data.'));
+                $this->messageManager->addSuccessMessage(__('Product stock updated successfully.'));
             } else {
-                $this->messageManager->addErrorMessage(__('Data was not saved.'));
+                $this->messageManager->addErrorMessage(__('Failed to save stock.'));
             }
-          } else {
+        } else {
             $this->messageManager->addErrorMessage(__('Please enter correct detail.'));
           }
+            
+        } catch (Exception $e) {
+            $this->messageManager->addErrorMessage(
+                __('An error occurred while processing your form. Please try again later.')
+            );
+        }
         return $this->resultRedirectFactory->create()->setPath('*/*/');
 
     }
