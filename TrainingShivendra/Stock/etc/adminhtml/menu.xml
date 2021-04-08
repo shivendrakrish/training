@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="TrainingShivendra_Stock::view" title="Stock" module="TrainingShivendra_Stock" sortOrder="50" resource="TrainingShivendra_Stock::view"/>
+        <add id="TrainingShivendra_Stock::menu" title="Stock Grid" module="TrainingShivendra_Stock" sortOrder="20" parent="TrainingShivendra_Stock::view" action="stock/stock/index" resource="TrainingShivendra_Stock::menu"/>
+    </menu>
+</config>
+
