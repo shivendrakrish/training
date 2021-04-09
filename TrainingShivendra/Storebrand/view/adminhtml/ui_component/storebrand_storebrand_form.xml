@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+     <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">storebrand_storebrand_form.storebrand_storebrand_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+ <settings>
+        <buttons>
+            <button name="save" class="TrainingShivendra\Storebrand\Block\SaveButton"/>
+            <button name="back" class="Magento\Cms\Block\Adminhtml\Block\Edit\BackButton"/>
+        </buttons>
+        <namespace>storebrand_storebrand_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>storebrand_storebrand_form.storebrand_storebrand_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="Storebrand_Storebrand_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="storebrand/storebrand/save"/>
+        </settings>
+        <dataProvider class="TrainingShivendra\Storebrand\Model\DataProvider" name="storebrand_storebrand_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>s_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="general">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true"></item>
+            </item>
+        </argument>
+
+        <field name="store_name" sortOrder="20" formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">storebrand</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>number</dataType>
+                <label translate="true">Store Name</label>
+                <dataScope>store_name</dataScope>
+            </settings>
+        </field>
+        <field name="url">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">URL</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">storebrand</item>
+                </item>
+            </argument>
+             <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="cat_id">
+                <argument name="data" xsi:type="array">
+                        <item name="options" xsi:type="object">TrainingShivendra\Storebrand\Model\Category</item>
+                        <item name="config" xsi:type="array">
+                        <item name="dataType" xsi:type="string">text</item>
+                        <item name="label" translate="true" xsi:type="string">Category</item>
+                        <item name="formElement" xsi:type="string">select</item>
+                        <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                        <item name="elementTmpl" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                        <item name="source" xsi:type="string">Product Category</item>
+                        <item name="showCheckbox" xsi:type="boolean">true</item>
+                        <item name="disableLabel" xsi:type="boolean">true</item>
+                        <item name="multiple" xsi:type="boolean">true</item>
+                        <item name="dataScope" xsi:type="string">cat_id</item>
+                        <item name="validation" xsi:type="array">
+                            <item name="required-entry" xsi:type="boolean">false</item>
+                        </item>
+                    </item>
+                </argument>
+            </field>
+
+        <field name="banner">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="dataType" xsi:type="string">string</item>
+                <item name="source" xsi:type="string">storebrand</item>
+                <item name="label" xsi:type="string" translate="true">Banners</item>
+                <item name="visible" xsi:type="boolean">true</item>
+                <item name="formElement" xsi:type="string">imageUploader</item>
+                <item name="previewTmpl" xsi:type="string">Magento_Catalog/image-preview</item>
+                <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                <item name="isMultipleFiles" xsi:type="boolean">true</item>
+                <item name="dataScope" xsi:type="string">image</item>
+                <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="storebrand/storebrand/uploader"/>
+                </item>
+            </item>
+        </argument>
+    </field> 
+<modal name="test_modal">
+    <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+            <item name="onCancel" xsi:type="string">actionCancel</item>
+            <item name="options" xsi:type="array">
+                <item name="buttons" xsi:type="array">
+                    <!-- <item name="0" xsi:type="array">
+                        <item name="text" xsi:type="string">Cancel</item>
+                        <item name="class" xsi:type="string">action-secondary</item>
+                        <item name="actions" xsi:type="array">
+                            <item name="0" xsi:type="string">actionCancel</item>
+                        </item>
+                    </item>
+                    <item name="1" xsi:type="array">
+                        <item name="text" xsi:type="string">Clear</item>
+                        <item name="class" xsi:type="string">action-secondary</item>
+                        <item name="actions" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="targetName" xsi:type="string">${ $.name }.testField</item>
+                                <item name="actionName" xsi:type="string">clear</item>
+                            </item>
+                        </item>
+                    </item> -->
+                    <item name="0" xsi:type="array">
+                        <item name="text" xsi:type="string">Done</item>
+                        <item name="class" xsi:type="string">action-primary</item>
+                        <item name="actions" xsi:type="array">
+                            <item name="0" xsi:type="string">actionDone</item>
+                        </item>
+                    </item>
+                </item>
+            </item>
+        </item>
+    </argument>
+<fieldset name="main">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string" translate="true">Select our products</item>
+                <item name="sortOrder" xsi:type="number">10</item>
+            </item>
+        </argument>
+        <insertListing name="product_listing">
+            <settings>
+                <dataLinks>
+                    <exports>false</exports>
+                    <imports>true</imports>
+                </dataLinks>
+                <autoRender>true</autoRender>
+                <selectionsProvider>
+                    product_listing.product_listing.columns.ids
+                </selectionsProvider>
+                <dataScope>product_listing</dataScope>
+                <ns>product_listing</ns>
+            </settings>
+            </insertListing>
+    </fieldset>
+</modal>
+<button name="modal_button">
+    <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+            <item name="title" xsi:type="string">Our Products</item>
+            <item name="actions" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="targetName" xsi:type="string">${ $.parentName}.test_modal</item>
+                    <item name="actionName" xsi:type="string">openModal</item>
+                </item>
+            </item>
+        </item>
+    </argument>
+</button>
+</fieldset>
+</form>
