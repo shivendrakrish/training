@@ -1,6 +1,13 @@
-<?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-    <referenceContainer name="content">
-        <block class="TrainingShivendra\Storebrand\Block\Home" name="srainingshivendra_storebrand" template="TrainingShivendra_Storebrand::home.phtml" />
-    </referenceContainer>
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+ <head>
+        <css src="TrainingShivendra_Storebrand::css/banners.css" />
+        <link src="TrainingShivendra_Storebrand::js/jssor.slider-28.1.0.min.js"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="TrainingShivendra\Storebrand\Block\Storebrands" name="brand_list" template="TrainingShivendra_Storebrand::brands.phtml">
+            </block>
+        </referenceContainer>
+    </body>
 </page>

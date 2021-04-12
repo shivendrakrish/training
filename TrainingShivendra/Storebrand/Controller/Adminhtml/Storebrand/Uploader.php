@@ -29,7 +29,7 @@ class Uploader extends \Magento\Backend\App\Action
  
     public function execute()
     {
-        $imageUploadId = $this->getRequest()->getParam('param_name', 'logo');
+        $imageUploadId = $this->getRequest()->getParam('param_name', 'banner');
         try {
             $imageResult = $this->imageUploader->saveFileToTmpDir($imageUploadId);
             // Upload image folder wise
@@ -37,7 +37,7 @@ class Uploader extends \Magento\Backend\App\Action
             $firstName = substr($imageName, 0, 1);
             $secondName = substr($imageName, 1, 1);
             $basePath = $this->filesystem->getDirectoryRead(DirectoryList::MEDIA)->getAbsolutePath() . 'logo/image/';
-            $mediaRootDir = $this->filesystem->getDirectoryRead(DirectoryList::MEDIA)->getAbsolutePath() . 'logo/image/' . $firstName . '/' . $secondName . '/';
+            $mediaRootDir = $this->filesystem->getDirectoryRead(DirectoryList::MEDIA)->getAbsolutePath() . 'logo/image/';
             if (!is_dir($mediaRootDir)) {
                 $this->fileIo->mkdir($mediaRootDir, 0775);
             }
@@ -55,7 +55,7 @@ class Uploader extends \Magento\Backend\App\Action
             $mediaUrl = $this->storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
             $imageResult['name'] = $newImageName;
             $imageResult['file'] = $newImageName;
-            $imageResult['url'] = $mediaUrl . 'logo/image/' . $firstName . '/' . $secondName . '/' . $newImageName;
+            $imageResult['url'] = $mediaUrl . 'logo/image/'. $newImageName;
         } catch (\Exception $e) {
             $imageResult = ['error' => $e->getMessage(), 'errorcode' => $e->getCode()];
         }

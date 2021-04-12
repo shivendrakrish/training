@@ -23,7 +23,6 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         }
         $items = $this->collection->getItems();
         $this->loadedData = array();
-        /** @var Customer $customer */
         foreach ($items as $store) {
             $this->loadedData[$store->getId()]['storebrandlist'] = $store->getData();
         }

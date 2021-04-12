@@ -1,0 +1,24 @@
+<?php
+/**
+ * Created By : RH
+ */
+?>
+<?php
+    $blockGrid = $block->getBlockGrid();
+    $gridJsObjectName = $blockGrid->getJsObjectName();
+?>
+<?= $block->getGridHtml() ?>
+<input type="hidden" name="product" data-form-part="storebrand_storebrand_form" id="products" value=""/>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "TrainingShivendra_Storebrand/js/assign-products": {
+                "selectedProducts":  <?= /* @escapeNotVerified */ $block->getProductsJson() ?>,
+                "gridJsObjectName": <?= /* @escapeNotVerified */ '"' . $gridJsObjectName . '"' ?: '{}' ?>
+            }
+        }
+    }
+</script>
+<script>
+    require('mage/apply/main').apply();
+</script>

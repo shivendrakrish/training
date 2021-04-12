@@ -29,4 +29,6 @@
           <argument name="imageUploader" xsi:type="object">VirtualTypeName</argument>
        </arguments>
     </type>
+
+
 </config>

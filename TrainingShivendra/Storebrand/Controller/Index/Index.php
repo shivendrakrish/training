@@ -1,5 +1,7 @@
 <?php
 namespace TrainingShivendra\Storebrand\Controller\Index;
+use Magento\Framework\App\RequestInterface;
+
 class Index extends \Magento\Framework\App\Action\Action
 {
     protected $resultPageFactory;
@@ -11,7 +13,6 @@ class Index extends \Magento\Framework\App\Action\Action
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
-        $resultPage->getConfig()->getTitle()->prepend(__('Store brand'));
         return $resultPage;
     }
 }

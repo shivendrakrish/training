@@ -39,6 +39,28 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
 					'Store URL'
 				)
 				->addColumn(
+					'entity_id',
+					\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+					255,
+					[],
+					'E id'
+				)
+				->addColumn(
+					'product_id',
+					\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+					255,
+					[],
+					'P Id'
+				)
+				->addColumn(
+					'position',
+					\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+					255,
+					[],
+					'Position'
+				)
+				
+				->addColumn(
 					'banner',
 					\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
 					'64k',
@@ -53,7 +75,7 @@ class InstallSchema implements \Magento\Framework\Setup\InstallSchemaInterface
 					'Cat Id'
 				)
 				->addColumn(
-					'ourproduct',
+					'product',
 					\Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
 					'64k',
 					[],

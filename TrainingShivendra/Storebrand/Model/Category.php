@@ -29,7 +29,6 @@ class Category implements \Magento\Framework\Option\ArrayInterface
         foreach ($collection as $category)
         {       
             $categoryArray[] = array('value' => $category->getId(), 'label' => $category->getName());
-
         }
         return $categoryArray;
 }
