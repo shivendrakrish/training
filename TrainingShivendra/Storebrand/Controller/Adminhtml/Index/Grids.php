@@ -1,7 +1,4 @@
 <?php
-/**
- * Created By : RH
- */
 namespace TrainingShivendra\Storebrand\Controller\Adminhtml\Index;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
