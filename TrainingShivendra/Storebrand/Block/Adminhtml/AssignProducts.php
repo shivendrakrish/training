@@ -1,31 +1,16 @@
 <?php
-/**
- * Created By : RH
- */
 namespace TrainingShivendra\Storebrand\Block\Adminhtml;
 class AssignProducts extends \Magento\Backend\Block\Template
 {
-    /**
-     * Block template
-     *
-     * @var string
-     */
+
     protected $_template = 'products/assign_products.phtml';
-    /**
-     * @var \Magento\Catalog\Block\Adminhtml\Category\Tab\Product
-     */
+   
     protected $blockGrid;
-    /**
-     * @var \Magento\Framework\Registry
-     */
+ 
     protected $registry;
-    /**
-     * @var \Magento\Framework\Json\EncoderInterface
-     */
+ 
     protected $jsonEncoder;
-    /**
-     * @var \RH\CustProductGrid\Model\ResourceModel\Product\CollectionFactory
-     */
+  
     protected $productFactory;
     /**
      * @param \Magento\Backend\Block\Template\Context                           $context
