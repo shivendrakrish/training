@@ -1,35 +1,17 @@
 <?php
-/**
- * Created By : RH
- */
 namespace TrainingShivendra\Storebrand\Block\Adminhtml\Tab;
 use Magento\Catalog\Model\Product\Visibility;
 use Magento\Framework\App\ObjectManager;
 use Magento\Store\Model\Store;
 class Productgrid extends \Magento\Backend\Block\Widget\Grid\Extended
 {
-    /**
-     * @var \Magento\Framework\Registry
-     */
+  
     protected $coreRegistry = null;
-    /**
-     * @var \Magento\Catalog\Model\ProductFactory
-     */
+
     protected $productFactory;
-    /**
-     * @var \RH\CustProductGrid\Model\ResourceModel\Product\CollectionFactory
-     */
+
     protected $productCollFactory;
-    /**
-     * @param \Magento\Backend\Block\Template\Context    $context
-     * @param \Magento\Backend\Helper\Data               $backendHelper
-     * @param \Magento\Catalog\Model\ProductFactory      $productFactory
-     * @param \Magento\Framework\Registry                $coreRegistry
-     * @param \Magento\Framework\Module\Manager          $moduleManager
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param Visibility|null                            $visibility
-     * @param array                                      $data
-     */
+
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Backend\Helper\Data $backendHelper,
