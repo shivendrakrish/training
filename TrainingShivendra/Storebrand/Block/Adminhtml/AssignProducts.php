@@ -12,13 +12,7 @@ class AssignProducts extends \Magento\Backend\Block\Template
     protected $jsonEncoder;
   
     protected $productFactory;
-    /**
-     * @param \Magento\Backend\Block\Template\Context                           $context
-     * @param \Magento\Framework\Registry                                       $registry
-     * @param \Magento\Framework\Json\EncoderInterface                          $jsonEncoder
-     * @param \RH\CustProductGrid\Model\ResourceModel\Product\CollectionFactory $productFactory
-     * @param array                                                             $data
-     */
+
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         \Magento\Framework\Registry $registry,
